@@ -1,7 +1,14 @@
 import React, { useContext} from 'react';
+import Select, { StylesConfig } from 'react-select';
 import { AppContext } from '../context/AppContext';
 import './CurrencyField.css'
 
+const options = [,
+    { value: 'Pound', label: 'Pound' },
+    { value: 'Euro', label: 'Euro' },
+    { value: 'Ruppee', label: 'Ruppee' }
+  ]
+  
 const CurrencyField = (props) => {
     const { dispatch } = useContext(AppContext);
 
@@ -12,22 +19,18 @@ const CurrencyField = (props) => {
         });
     };
 
+    const customStyles = {
+        control: (styles) => ({ ...styles, backgroundColor: '#a6e3a1' }),
+        option: (base, {isFocused}) => {
+            return {
+                ...base,
+                backgroundColor: isFocused ? "white" : "#a6e3a1",
+              };
+        }
+        };
+
     return (
-        <div>
-            <div>
-
-            <div style={{ marginLeft: '2rem' }}>
-                <select class="dropDown" required id="inputGroupSelect01" onChange={(event) => handleCurrencyChange(event.target.value)}>
-                <option hidden value="">Currency (£ Pound)</option>
-                <option value="£" name="pound"> £ Pound</option>
-                <option value="$" name="dollar"> $ Dollar</option>
-                <option value="€" name="euro"> € Euro</option>
-                <option value="₹" name="ruppee"> ₹ Ruppee</option>
-                </select>
-                </div>
-                </div>
-
-        </div>
+             <Select label="Currency (Pound)" styles={customStyles} options={options} onChange={handleCurrencyChange(options.value)}/>
     );
 };
 

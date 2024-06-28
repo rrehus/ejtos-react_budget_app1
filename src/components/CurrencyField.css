@@ -1,18 +1,21 @@
 .dropDown {
+    background-color: #a6e3a1;
     width: 190px;
     padding: 10px;
  }
 
- select {
+ .selector {
     background-color: #a6e3a1;
     color: white
  }
 
-select option {
+.selector option {
     position: relative;
     font-family: Arial;
     background-color: #a6e3a1;
     color: black;
  }
- 
 
+ .selector option:hover{
+    background-color: white !important;
+  }
