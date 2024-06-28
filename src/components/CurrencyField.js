@@ -1,5 +1,6 @@
 import React, { useContext} from 'react';
 import { AppContext } from '../context/AppContext';
+import './CurrencyField.css'
 
 const CurrencyField = (props) => {
     const { dispatch } = useContext(AppContext);
@@ -13,15 +14,15 @@ const CurrencyField = (props) => {
 
     return (
         <div>
-            <div className='row'>
+            <div>
 
-            <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
-                <select className="custom-select" id="inputGroupSelect01" onChange={(event) => handleCurrencyChange(event.target.value)}>
-                <option defaultValue>Currency</option>
-                <option value="Pound" name="pound"> £</option>
-                <option value="Dollar" name="dollar"> $</option>
-                <option value="Euro" name="euro"> €</option>
-                <option value="Ruppee" name="ruppee"> ₹</option>
+            <div style={{ marginLeft: '2rem' }}>
+                <select class="dropDown" required id="inputGroupSelect01" onChange={(event) => handleCurrencyChange(event.target.value)}>
+                <option hidden value="">Currency (£ Pound)</option>
+                <option value="£" name="pound"> £ Pound</option>
+                <option value="$" name="dollar"> $ Dollar</option>
+                <option value="€" name="euro"> € Euro</option>
+                <option value="₹" name="ruppee"> ₹ Ruppee</option>
                 </select>
                 </div>
                 </div>
