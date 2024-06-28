@@ -1,13 +1,13 @@
 import React, { useContext} from 'react';
 import Select, { StylesConfig } from 'react-select';
-import InputLabel from 'react-select';
 import { AppContext } from '../context/AppContext';
 import './CurrencyField.css'
 
 const options = [
-    { value: 'Pound', label: 'Pound' },
-    { value: 'Euro', label: 'Euro' },
-    { value: 'Ruppee', label: 'Ruppee' }
+    { value: '$', label: '$ Dollar' },
+    { value: '£', label: '£ Pound' },
+    { value: '€', label: '€ Euro' },
+    { value: '₹', label: '₹ Ruppee' }
   ]
   
 const CurrencyField = (props) => {
@@ -21,7 +21,8 @@ const CurrencyField = (props) => {
     };
 
     const customStyles = {
-        control: (styles) => ({ ...styles, backgroundColor: '#a6e3a1' }),
+        control: (styles) => ({ ...styles, backgroundColor: '#a6e3a1',height:"58px",border:"none" }),
+        placeholder: (defaultStyles) => ({...defaultStyles,color: 'white'}),
         option: (base, {isFocused}) => {
             return {
                 ...base,
@@ -32,7 +33,7 @@ const CurrencyField = (props) => {
 
     return (
 
-    <Select placeholder="Currency (Pound)" styles={customStyles} options={options}  onChange={(e) => handleCurrencyChange(e.value)}/>    
+    <Select class="selectClass" placeholder="Currency (£ Pound)" styles={customStyles} options={options}  onChange={(e) => handleCurrencyChange(e.value)}/>    
     );
 };
 

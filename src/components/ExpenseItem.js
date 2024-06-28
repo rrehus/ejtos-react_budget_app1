@@ -5,6 +5,7 @@ import { AppContext } from '../context/AppContext';
 
 const ExpenseItem = (props) => {
 const { dispatch } = useContext(AppContext);
+const { currency } = useContext(AppContext);
 const handleDeleteExpense = () => {
         dispatch({
             type: 'DELETE_EXPENSE',
@@ -28,7 +29,7 @@ const handleDeleteExpense = () => {
     return (
         <tr>
         <td>{props.name}</td>
-        <td>£{props.cost}</td>
+        <td>{currency}{props.cost}</td>
         <td><FaPlusCircle style={{color:"#67aa63"}} size='2.5em' onClick={event=> increaseAllocation(props.name)}>+</FaPlusCircle></td>
         <td><FaMinusCircle style={{color:"#a22e1f"}} size='2.5em' onClick={handleDeleteExpense}></FaMinusCircle></td>
         </tr>
