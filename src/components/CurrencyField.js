@@ -1,20 +1,28 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext} from 'react';
 import { AppContext } from '../context/AppContext';
 
 const CurrencyField = (props) => {
-    const { currency } = useContext(AppContext);
-    const [newCurrency, setCurrency] = useState(currency);
+    const { dispatch } = useContext(AppContext);
+
+    const handleCurrencyChange = (currency) => {
+        dispatch({
+            type: 'CHG_CURRENCY',
+            payload: currency,
+        });
+    };
 
     return (
         <div>
             <div className='row'>
 
             <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
-                  <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setCurrency(event.target.value)}>
-                        <option defaultValue>Currency</option>
-                        <option value="Pound" name="pound"> £</option>
+                <select className="custom-select" id="inputGroupSelect01" onChange={(event) => handleCurrencyChange(event.target.value)}>
+                <option defaultValue>Currency</option>
+                <option value="Pound" name="pound"> £</option>
                 <option value="Dollar" name="dollar"> $</option>
-                  </select>
+                <option value="Euro" name="euro"> €</option>
+                <option value="Ruppee" name="ruppee"> ₹</option>
+                </select>
                 </div>
                 </div>
 
@@ -23,3 +31,5 @@ const CurrencyField = (props) => {
 };
 
 export default CurrencyField;
+
+
